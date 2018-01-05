@@ -1,11 +1,8 @@
 # To start
-![aaa](https://raw.githubusercontent.com/csuduan/images/master/111.png)
-
 This is a project template for [vue-cli](https://github.com/vuejs/vue-cli)
 
 本系统采用多页面方式（每个页面是个独立SPA） 整合多个子系统系统。
 
-# 使用
 ``` bash
 # install dependencies
 npm install
