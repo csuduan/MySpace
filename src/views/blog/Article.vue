@@ -37,6 +37,8 @@ import scrollTop from './components/scrollTop.vue'
 import 'wysiwyg'
 import axios from 'axios'
 
+//import '@/styles/md.css'
+
 var md = require('markdown-it')();
 export default {
   name: 'Article',

@@ -8,6 +8,7 @@ function resolve(dir) {
 }
 
 module.exports = {
+
   //打包入口，非路由
   entry: {
       'blog':resolve('src/views/blog/index.js'),

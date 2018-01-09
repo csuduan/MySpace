@@ -23,6 +23,14 @@ module.exports = merge(baseWebpackConfig, {
         }),
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NoEmitOnErrorsPlugin(),
+        /*new webpack.optimize.UglifyJsPlugin({
+            output: {
+                comments: false,  // remove all comments
+            },
+            compress: {
+                warnings: false
+            }
+        }),*/
 
         //注：动态生成的html在内存中，服务端路由无法直接访问
         new HtmlWebpackPlugin({

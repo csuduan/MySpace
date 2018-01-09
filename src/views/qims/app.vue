@@ -8,7 +8,6 @@
 </template>
 
 <script>
-    import Vue from 'Vue';
     export default {
         name: 'app',
         components: {

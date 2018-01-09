@@ -14,7 +14,7 @@ import login from '@/views/blog/login'
 const Blog = resolve => require(['@/views/blog/Blog'], resolve)
 const About = resolve => require(['@/views/blog/About'], resolve)
 const Article = resolve => require(['@/views/blog/Article'], resolve)
-const Messages = resolve => require(['@/views/blog/Messages'], resolve)
+const Messages = resolve => require(['@/views/blog/messages'], resolve)
 
 const admin = resolve => require(['@/views/blog/admin/admin'], resolve)
 const adminArticle = resolve => require(['@/views/blog/admin/adminArticle'], resolve)

@@ -16,6 +16,8 @@ import '@/styles/article.css'
 import '@/styles/side.css'
 import '@/styles/blog.css'
 
+import "babel-polyfill"
+
 
 Vue.use(ElementUI)
 Vue.use(mavonEditor)

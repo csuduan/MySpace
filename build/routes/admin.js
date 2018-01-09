@@ -3,6 +3,8 @@ var trimHtml = require('trim-html');
 let express = require('express');
 let md5 = require('md5');
 let router = express.Router();
+var uuid = require('node-uuid')
+var fs = require('fs');
 
 let Article = require('./../../models/blog/articles')
 let User = require('./../../models/blog/users')
@@ -227,5 +229,40 @@ router.post("/api/tagsAdd", function (req,res) {
       })
     }
   })
+})
+
+// 添加图片
+router.post("/api/imgAdd", function (req,res) {
+
+    let image=req.body.image
+    var base64Data = image.miniurl.replace(/^data:image\/\w+;base64,/, "");
+    var dataBuffer = new Buffer(base64Data, 'base64');
+        var url="/images/md/"+uuid.v1()+".jpg"
+    var logcalurl="src/dist"+url
+
+    fs.writeFile(logcalurl, dataBuffer, function(err) {
+        if(err){
+            res.send(0);
+        }else{
+            res.send(url);
+        }
+    });
+
+
+/*    Tags.create({name:tagAdd}, function (err,doc) {
+        if (err) {
+            res.json ({
+                status: "1",
+                msg: err.message,
+                result:''
+            })
+        } else {
+            res.json ({
+                status: '0',
+                msg: '',
+                result: 'suc'
+            })
+        }
+    })*/
 })
 module.exports = router
