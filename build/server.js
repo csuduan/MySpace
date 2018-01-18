@@ -23,10 +23,10 @@ var proxyTable = config.dev.proxyTable
 
 mongoose.connect(config.dev.mongodb);
 mongoose.connection.on("connected", function () {
-    console.log("MongoDB connect success");
+    console.log("MongoDB connect "+config.dev.mongodb+"success");
 });
 mongoose.connection.on("error", function () {
-    console.log("MongoDB connect fail");
+    console.log("MongoDB connect  "+config.dev.mongodb+"fail");
 });
 mongoose.connection.on("disconnected", function () {
     console.log("MongoDB connect disconnected");
