@@ -37,7 +37,7 @@ import scrollTop from './components/scrollTop.vue'
 import 'wysiwyg'
 import axios from 'axios'
 
-//import '@/styles/md.css'
+import '@/styles/md.css'
 
 var md = require('markdown-it')();
 export default {
@@ -111,14 +111,14 @@ body {
   margin-bottom: 20px;
 }
 
-.full-content h2 {
+/*.full-content h2 {
   margin: 0 20px 0 0;
   font-size: 40px;
   font-weight: 500;
   line-height: 1;
   letter-spacing: -.03em;
   color: #444;
-}
+}*/
 
 .byline {
   width: auto;

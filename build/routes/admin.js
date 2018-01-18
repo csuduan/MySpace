@@ -9,6 +9,8 @@ var fs = require('fs');
 let Article = require('./../../models/blog/articles')
 let User = require('./../../models/blog/users')
 let Tags = require('./../../models/blog/tags')
+
+var qiniu = require("qiniu");
 // 文章列表
 router.get("/api/articleList_admin", function (req,res) {
   let page = parseInt(req.param("page")) //浏览器参数第几页
@@ -235,34 +237,58 @@ router.post("/api/tagsAdd", function (req,res) {
 router.post("/api/imgAdd", function (req,res) {
 
     let image=req.body.image
-    var base64Data = image.miniurl.replace(/^data:image\/\w+;base64,/, "");
-    var dataBuffer = new Buffer(base64Data, 'base64');
-        var url="/images/md/"+uuid.v1()+".jpg"
-    var logcalurl="src/dist"+url
+    let base64Data = image.miniurl.replace(/^data:image\/\w+;base64,/, "");
+    let dataBuffer = new Buffer(base64Data, 'base64');
 
-    fs.writeFile(logcalurl, dataBuffer, function(err) {
+
+
+
+    //保存图片到七牛
+
+    var accessKey = '1mVvZkcX-0jBn8UOY4Vr7fvDT0dqxDLMkBvSIhHT';
+    var secretKey = 'slYzSxIV0yayB834HLcESIAqrIyO-WORgEcsf1Ka';
+    var mac = new qiniu.auth.digest.Mac(accessKey, secretKey);
+    var bucket = 'myspace';
+    var key = uuid.v1()+".jpg"
+    var config = new qiniu.conf.Config();
+    var formUploader = new qiniu.form_up.FormUploader(config);
+
+    var options = {
+        scope: bucket,
+    };
+    let putPolicy = new qiniu.rs.PutPolicy(options);
+    let token =putPolicy.uploadToken(mac);
+
+
+    var extra = new qiniu.form_up.PutExtra();
+
+    var url="http://p2n5cx9yi.bkt.clouddn.com/"+key
+    formUploader.put(token, key, dataBuffer, extra, function(err, ret) {
+        if(!err) {
+            // 上传成功， 处理返回值
+            console.log(ret.hash, ret.key, ret.persistentId);
+            res.send(url);
+        } else {
+            // 上传失败， 处理返回代码
+            console.log(err);
+            res.send(0);
+        }
+    });
+
+    //保存图片到本地
+    /*let localurl="src/dist"+url
+    fs.writeFile(localurl, dataBuffer, function(err) {
         if(err){
             res.send(0);
         }else{
             res.send(url);
         }
-    });
+    });*/
 
 
-/*    Tags.create({name:tagAdd}, function (err,doc) {
-        if (err) {
-            res.json ({
-                status: "1",
-                msg: err.message,
-                result:''
-            })
-        } else {
-            res.json ({
-                status: '0',
-                msg: '',
-                result: 'suc'
-            })
-        }
-    })*/
+
+
+
+
 })
 module.exports = router

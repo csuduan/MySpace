@@ -22,7 +22,7 @@
               </h3>
               <div class="pres">
               <a href="" class="pic">
-              <img src="images/dq.jpg" alt="我的头像">
+              <img src="/images/dq.jpg" alt="我的头像">
               </a>
               <a href="" class="detail">
                 <span class="item-info">

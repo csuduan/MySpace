@@ -72,6 +72,8 @@
 <script>
 import axios from 'axios'
 //axios.defaults.headers['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8'
+
+
 export default{
 		data(){
       return {
@@ -119,6 +121,14 @@ export default{
                     // $vm.$img2Url 详情见本页末尾
                     $vm.$img2Url(pos, url);
                 })*/
+
+
+
+
+
+
+
+
             },
       subArticle () {
         if (!this.form.title) {

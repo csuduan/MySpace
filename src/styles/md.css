@@ -1,13 +1,8 @@
 body {
     font-family: "Microsoft Yahei", Helvetica, arial, sans-serif ;
-    font-size: 14px;
+    font-size: 16px;
     line-height: 1.6;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    background-color: white;
-    padding: 30px;
     color: #516272;}
-
 body > *:first-child {
     margin-top: 0 !important; }
 body > *:last-child {
@@ -292,24 +287,5 @@ code {
     white-space: pre-wrap;
     word-break: break-all;
     display: block;
-
-}
-* {
-    -webkit-print-color-adjust: exact;
-}
-@media screen and (min-width: 914px) {
-    body {
-        width: 960px;
-        margin:0 auto;
-    }
-}
-@media print {
-    table, pre {
-        page-break-inside: avoid;
-    }
-    pre {
-        word-wrap: break-word;
-    }
-
 
 }

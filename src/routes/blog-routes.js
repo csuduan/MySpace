@@ -25,13 +25,8 @@ Vue.use(Router)
 
 export default new Router({
     mode: 'history',
-    base: '/blog/',
+    base: '/blog',
     routes: [
-/*        {
-            path: '/blog',
-            name: 'Index',
-            component: Index
-        },*/
         {
             path: '/',
             name: 'Blog',
