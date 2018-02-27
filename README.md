@@ -73,7 +73,7 @@ npm run build
 
 3. QIMS系统  http://localhost:3000/qims
 
-test
+
 
 # 参考     
 https://github.com/JhonXY/my-blog

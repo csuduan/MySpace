@@ -10,7 +10,8 @@
       <el-menu-item index="2-3">选项3</el-menu-item>
     </el-submenu>
     <el-menu-item index="3"><a href="https://www.baidu.com" target="_blank">baiu</a></el-menu-item>
-    </el-menu>
+    <el-menu-item index="4"><a href="javascript:;" @click="logout">退出</a></el-menu-item>
+</el-menu>
     <el-breadcrumb separator="/" style="padding: 20px 20px 20px 20px;">
       <el-breadcrumb-item :to="{ path: '/admin' }">首页</el-breadcrumb-item>
       <el-breadcrumb-item :to="{ path: '/admin/adminArticleList' }">xxx</el-breadcrumb-item>
@@ -56,10 +57,15 @@ export default {
       this.isCollapse = !this.isCollapse
     },
     checkLogin(){
-      if(!this.getCookie('user')){
+      if(!sessionStorage.getItem('user')){
         this.$router.push('/login');
       }
-    }
+    },
+      logout()
+      {
+          sessionStorage.removeItem('user')
+          this.$router.push('/login');
+      }
   }
 }
 </script>

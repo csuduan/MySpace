@@ -1,6 +1,7 @@
 <template lang="html">
   <div class="admin-container">
-    <mavon-editor class="set" v-model="value" @change="getContent"></mavon-editor>
+    <mavon-editor  ref=md class="set" v-model="value" @imgAdd="imgAdd" @change="getContent" :ishljs = "true"></mavon-editor>
+
     <div class="footer">
       <el-popover
         ref="popover5"
@@ -39,6 +40,35 @@ export default {
     getContent (value,render) {
       this.content = value
     },
+      imgAdd(pos, $file){
+          // 第一步.将图片上传到服务器.
+
+          var formdata = new FormData();
+          formdata.append('image', $file);
+
+          axios.post("/api/imgAdd",{image:$file}).then((resp)=>{
+              var url="/images/md/a34e4960-f44f-11e7-bdb0-d5f2f5133b8e.jpg"
+              this.$refs.md.$img2Url(pos, resp.data);
+          })
+          /*axios({
+              url: '/api/imgAdd',
+              method: 'post',
+              data: formdata,
+              headers: { 'Content-Type': 'multipart/form-data' },
+          }).then((url) => {
+              // 第二步.将返回的url替换到文本原位置![...](./0) -> ![...](url)
+              // $vm.$img2Url 详情见本页末尾
+              $vm.$img2Url(pos, url);
+          })*/
+
+
+
+
+
+
+
+
+      },
     getValue () {
       let articleId = this.$route.query.articleId
       let param = {

@@ -23,10 +23,10 @@ var proxyTable = config.dev.proxyTable
 
 mongoose.connect(config.dev.mongodb);
 mongoose.connection.on("connected", function () {
-    console.log("MongoDB connect "+config.dev.mongodb+"success");
+    console.log("MongoDB connect "+config.dev.mongodb+" success");
 });
 mongoose.connection.on("error", function () {
-    console.log("MongoDB connect  "+config.dev.mongodb+"fail");
+    console.log("MongoDB connect  "+config.dev.mongodb+" fail");
 });
 mongoose.connection.on("disconnected", function () {
     console.log("MongoDB connect disconnected");
@@ -114,8 +114,8 @@ swig.setDefaults({cache:false});
 
 app.use(favicon(__dirname + '/../src/images/favicon.ico'));
 app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json({limit: '50mb'}));
+app.use(bodyParser.urlencoded({limit: '50mb',extended: false}));
 //app.use(multipart({uploadDir: __dirname + '/../public/uploads'}));
 app.use(cookieParser());
 //
