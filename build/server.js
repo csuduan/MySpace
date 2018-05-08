@@ -10,6 +10,7 @@ var multipart = require('connect-multiparty');
 var webpack = require('webpack')
 var proxyMiddleware = require('http-proxy-middleware')
 var webpackConfig = require('./webpack.dev.conf')
+var compression = require('compression')
 
 
 
@@ -73,9 +74,9 @@ app.use(devMiddleware)
 // enable hot-reload and state-preserving
 // compilation error display
 app.use(hotMiddleware)
-
+app.use(compression());
 //静态资源
-/app.use(express.static(path.join(__dirname, '..','src/dist')));
+app.use(express.static(path.join(__dirname, '..','src/dist')));
 //app.use(express.static('public/dist'));
 
 

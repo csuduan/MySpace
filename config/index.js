@@ -23,7 +23,7 @@ module.exports = {
   },
   dev: {
     env: require('./dev.env'),
-    port: 3000,
+    port: 3002,
       mongodb: 'mongodb://192.168.1.16/tm-blog',
     //autoOpenBrowser: true,
     assetsSubDirectory: 'static',
